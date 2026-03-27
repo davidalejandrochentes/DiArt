@@ -1,0 +1,66 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block 'title' %}DiArt - Inicio{% endblock %}
+
+{% block 'content' %}
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-12">
+    <div class="max-w-5xl w-full">
+        <h1 class="text-4xl md:text-5xl font-bold text-center text-slate-800 mb-4">Bienvenido a DiArt</h1>
+        <p class="text-lg text-slate-600 text-center mb-12">Selecciona una sección para explorar</p>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Card Tienda -->
+            <a href="{% url 'tienda:index' %}" class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="aspect-[4/3] overflow-hidden">
+                    {% if tienda and tienda.foto %}
+                        <img src="{{ tienda.foto.url }}" alt="Tienda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    {% else %}
+                        <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-6xl">store</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                    <h2 class="text-2xl font-bold text-white mb-2">Tienda</h2>
+                    {% if tienda and tienda.descripcion %}
+                        <p class="text-white/90 text-sm line-clamp-2">{{ tienda.descripcion }}</p>
+                    {% else %}
+                        <p class="text-white/90 text-sm">Explora nuestros productos y categorías</p>
+                    {% endif %}
+                </div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                    <span class="material-symbols-outlined text-white">arrow_forward</span>
+                </div>
+            </a>
+
+            <!-- Card Portafolio -->
+            <a href="{% url 'portafoleo:index' %}" class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="aspect-[4/3] overflow-hidden">
+                    {% if portafolio and portafolio.foto %}
+                        <img src="{{ portafolio.foto.url }}" alt="Portafolio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    {% else %}
+                        <div class="w-full h-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-6xl">collections</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                    <h2 class="text-2xl font-bold text-white mb-2">Portafolio</h2>
+                    {% if portafolio and portafolio.descripcion %}
+                        <p class="text-white/90 text-sm line-clamp-2">{{ portafolio.descripcion }}</p>
+                    {% else %}
+                        <p class="text-white/90 text-sm">Descubre nuestros trabajos y proyectos</p>
+                    {% endif %}
+                </div>
+                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                    <span class="material-symbols-outlined text-white">arrow_forward</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
