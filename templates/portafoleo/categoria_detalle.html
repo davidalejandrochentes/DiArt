@@ -1,0 +1,95 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block 'title' %}{{ categoria.nombre }} - Portafolio - DiArt{% endblock %}
+
+{% block 'content' %}
+<div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
+            <a href="{% url 'home' %}" class="hover:text-slate-700">Inicio</a>
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+            <a href="{% url 'portafoleo:index' %}" class="hover:text-slate-700">Portafolio</a>
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+            <span class="text-slate-800 font-medium">{{ categoria.nombre }}</span>
+        </nav>
+
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-2">{{ categoria.nombre }}</h1>
+                {% if portafolio and portafolio.descripcion %}
+                    <p class="text-slate-600">{{ portafolio.descripcion }}</p>
+                {% endif %}
+            </div>
+            <a href="{% url 'portafoleo:index' %}" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-slate-600 hover:text-slate-800 transition-colors">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Ver todas las categorías
+            </a>
+        </div>
+
+        <!-- Galería de imágenes -->
+        {% if imagenes %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for imagen in imagenes %}
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer" onclick="openModal('{{ imagen.imagen.url }}')">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="{{ imagen.imagen.url }}" alt="Imagen {{ forloop.counter }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-12">
+                <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">collections</span>
+                <p class="text-slate-500">No hay imágenes en esta categoría</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Modal para ver imagen ampliada -->
+<div id="imageModal" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-slate-300 transition-colors">
+        <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <img id="modalImage" src="" alt="Imagen ampliada" class="max-w-full max-h-[90vh] object-contain rounded-lg">
+</div>
+{% endblock %}
+
+{% block 'scripts' %}
+<script>
+    function openModal(imageUrl) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageUrl;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+</script>
+{% endblock %}

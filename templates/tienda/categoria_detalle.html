@@ -1,0 +1,135 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block 'title' %}{{ categoria.nombre }} - Tienda - DiArt{% endblock %}
+
+{% block 'content' %}
+<div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
+            <a href="{% url 'home' %}" class="hover:text-slate-700">Inicio</a>
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+            <a href="{% url 'tienda:index' %}" class="hover:text-slate-700">Tienda</a>
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+            <span class="text-slate-800 font-medium">{{ categoria.nombre }}</span>
+        </nav>
+
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-2">{{ categoria.nombre }}</h1>
+                {% if tienda and tienda.descripcion %}
+                    <p class="text-slate-600">{{ tienda.descripcion }}</p>
+                {% endif %}
+            </div>
+            <a href="{% url 'tienda:index' %}" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-slate-600 hover:text-slate-800 transition-colors">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Ver todas las categorías
+            </a>
+        </div>
+
+        <!-- Productos Grid -->
+        {% if productos %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {% for producto in productos %}
+                    <div class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer" onclick="openModal('{{ producto.imagen.url }}', '{{ producto.nombre|escapejs }}', '{{ producto.descripcion|escapejs }}', '{% if producto.precio_rebajado %}{{ producto.precio_rebajado }}{% else %}{{ producto.precio_normal }}{% endif %}', '{% if producto.precio_rebajado %}{{ producto.precio_normal }}{% endif %}')">
+                        <div class="aspect-square overflow-hidden relative">
+                            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg">zoom_in</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-slate-800 mb-2 line-clamp-1">{{ producto.nombre }}</h3>
+                            <p class="text-sm text-slate-500 mb-3 line-clamp-2">{{ producto.descripcion }}</p>
+                            <div class="flex items-center gap-2">
+                                {% if producto.precio_rebajado %}
+                                    <span class="text-lg font-bold text-emerald-600">${{ producto.precio_rebajado }}</span>
+                                    <span class="text-sm text-slate-400 line-through">${{ producto.precio_normal }}</span>
+                                {% else %}
+                                    <span class="text-lg font-bold text-slate-800">${{ producto.precio_normal }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-12">
+                <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">inventory_2</span>
+                <p class="text-slate-500">No hay productos en esta categoría</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Modal para ver producto ampliado -->
+<div id="productModal" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-slate-300 transition-colors z-10">
+        <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <div class="max-w-5xl w-full grid md:grid-cols-2 gap-6 bg-white rounded-2xl overflow-hidden max-h-[90vh]">
+        <div class="aspect-square overflow-hidden">
+            <img id="modalImage" src="" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 flex flex-col justify-center">
+            <h2 id="modalTitle" class="text-2xl font-bold text-slate-800 mb-4"></h2>
+            <p id="modalDescription" class="text-slate-600 mb-6"></p>
+            <div class="flex items-center gap-3">
+                <span id="modalPrice" class="text-2xl font-bold text-emerald-600"></span>
+                <span id="modalOldPrice" class="text-lg text-slate-400 line-through"></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block 'scripts' %}
+<script>
+    function openModal(imageUrl, nombre, descripcion, precio, precioAnterior) {
+        const modal = document.getElementById('productModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalOldPrice = document.getElementById('modalOldPrice');
+        
+        modalImage.src = imageUrl;
+        modalTitle.textContent = nombre;
+        modalDescription.textContent = descripcion;
+        modalPrice.textContent = '$' + precio;
+        
+        if (precioAnterior) {
+            modalOldPrice.textContent = '$' + precioAnterior;
+            modalOldPrice.style.display = 'inline';
+        } else {
+            modalOldPrice.style.display = 'none';
+        }
+        
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('productModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.getElementById('productModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+</script>
+{% endblock %}
