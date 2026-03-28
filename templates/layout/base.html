@@ -2,61 +2,56 @@
 <!DOCTYPE html>
 <html lang="es">
 
-    <head>
+<head>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="author" content="">
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:title" content="">
-        <meta property="og:description" content="">
-        <meta property="og:image" content="{% static "" %}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:locale" content="en_US">
-        <!-- Twitter -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:url" content="">
-        <meta name="twitter:title" content="">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="{% static "" %}">
-        <!-- Preconnect for performance -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>   
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"> 
-        <!-- Tailwind CSS -->
-        <script src="{% static "js/container-queries.js" %}"></script>
-        <!-- Tailwind Configuration -->
-        <script src="{% static "js/tailwind-config.js" %}"></script>
-        <!-- Custom Styles -->
-        <link rel="stylesheet" href="{% static "css/styles.css" %}">
-        <!-- Favicon -->
-        <link rel="icon" href="{% static "" %}" type="image/png" sizes="16x16">
-        <!-- Blocks -->
-        <title>{% block 'title' %}{% endblock %}</title>
-        {% block 'styles' %}{% endblock %}
-    </head>
-    
-    <body class="bg-white text-slate-900 font-display antialiased">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="{% static "" %}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="">
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="{% static "" %}">
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="{% static "js/container-queries.js" %}"></script>
+<!-- Tailwind Configuration -->
+<script src="{% static "js/tailwind-config.js" %}"></script>
+<!-- Custom Styles -->
+<link rel="stylesheet" href="{% static "css/styles.css" %}">
+<!-- Favicon -->
+<link rel="icon" href="{% static "" %}" type="image/png" sizes="16x16">
+<!-- Blocks -->
+<title>{% block 'title' %}{% endblock %}</title>
+{% block 'styles' %}{% endblock %}
+</head>
 
-        <nav>
+<body class="bg-white text-slate-900 font-display antialiased">
 
-        </nav>
+<main id="main-content">
+{% block 'content' %}{% endblock %}
+</main>
 
-        <main id="main-content">
-            {% block 'content' %}{% endblock %}
-        </main>
-        
-        <footer class="" aria-label="Footer">
-            
-        </footer>
+<footer class="">
+</footer>
 
-        {% block 'scripts' %}{% endblock %}
-    
-    </body>
+{% block 'scripts' %}{% endblock %}
+
+</body>
 </html>
