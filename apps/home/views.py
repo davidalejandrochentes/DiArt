@@ -4,6 +4,7 @@ from apps.about.models import About
 from apps.services.models import Service
 from apps.catalog.models import Category
 from apps.team.models import TeamMember
+from apps.materials.models import MaterialCategory
 
 
 def home(request):
@@ -12,6 +13,9 @@ def home(request):
     services = Service.objects.filter(activo=True)[:3]
     categories = Category.objects.filter(activo=True, destacado=True)[:3]
     team_members = TeamMember.objects.filter(activo=True)
+    material_categories = MaterialCategory.objects.filter(activo=True, destacado=True)[
+        :3
+    ]
     return render(
         request,
         "home.html",
@@ -21,5 +25,6 @@ def home(request):
             "services": services,
             "categories": categories,
             "team_members": team_members,
+            "material_categories": material_categories,
         },
     )

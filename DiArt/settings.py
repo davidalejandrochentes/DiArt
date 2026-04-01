@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "apps.services",
     "apps.catalog",
     "apps.team",
+    "apps.materials",
 ]
 
 MIDDLEWARE = [

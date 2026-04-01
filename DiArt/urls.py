@@ -9,6 +9,7 @@ urlpatterns = [
     path("", include("apps.about.urls")),
     path("", include("apps.services.urls")),
     path("", include("apps.catalog.urls")),
+    path("", include("apps.materials.urls")),
 ]
 
 if settings.DEBUG:
