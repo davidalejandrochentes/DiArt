@@ -1,0 +1,84 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Servicios - DiArt{% endblock %}
+
+{% block 'content' %}
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <div class="flex items-center">
+        <a href="/" class="text-3xl font-black bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">DiArt</a>
+      </div>
+        <div class="flex items-center space-x-8">
+          <a href="/" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Inicio</a>
+          <a href="{% url 'about' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Nosotros</a>
+          <a href="{% url 'services' %}" class="relative text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary">Servicios</a>
+          <a href="#" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Contacto</a>
+        </div>
+    </div>
+  </div>
+</nav>
+
+<section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
+        <span class="w-2 h-2 bg-primary rounded-full"></span>
+        <span class="text-sm font-semibold uppercase tracking-wider">Nuestros Servicios</span>
+      </div>
+      <h1 class="text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
+        Soluciones <span class="text-primary">completas</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto">Ofrecemos una amplia gama de servicios diseñados para impulsar tu presencia digital y hacer crecer tu negocio</p>
+    </div>
+
+    {% if services %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      {% for service in services %}
+      <div class="group bg-white rounded-3xl shadow-xl shadow-slate-900/5 border border-slate-100 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+        <div class="relative overflow-hidden">
+          {% if service.imagen %}
+          <img src="{{ service.imagen.url }}" alt="{{ service.titulo }}" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+          {% endif %}
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-8">
+          <div class="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-primary transition-colors duration-300">{{ service.titulo }}</h3>
+          <p class="text-slate-600 leading-relaxed">{{ service.descripcion_larga }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-20">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-slate-100 rounded-full mb-6">
+        <svg class="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold text-slate-900 mb-2">Sin servicios</h2>
+      <p class="text-slate-500">Añade servicios desde el admin</p>
+    </div>
+    {% endif %}
+
+    <div class="text-center">
+      <a href="/" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Volver al inicio
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
