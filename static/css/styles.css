@@ -1,28 +1,60 @@
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .animate-float {
-    animation: float 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
 @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 8s ease infinite;
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-out;
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+}
+
+#carousel-prev,
+#carousel-next {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-container:hover #carousel-prev,
+.carousel-container:hover #carousel-next {
+  opacity: 1;
+}
+
+#carousel-dots button {
+  transition: all 0.3s ease;
+}
+
+#carousel-dots button:hover {
+  transform: scale(1.2);
 }
