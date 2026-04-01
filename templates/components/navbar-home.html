@@ -1,0 +1,100 @@
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="text-3xl font-black bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">DiArt</a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        {% block 'nav-links' %}
+        <a href="/" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Inicio</a>
+        <a href="{% url 'about' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Nosotros</a>
+        <a href="{% url 'services' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Servicios</a>
+        <a href="{% url 'catalog' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Catálogo</a>
+        <a href="#equipo" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Equipo</a>
+        <a href="{% url 'materials' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Materiales</a>
+        <a href="#contacto" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Contacto</a>
+        {% endblock %}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="text-slate-700 hover:text-primary p-2 rounded-lg transition-colors duration-300" aria-label="Abrir menú">
+          <svg class="w-6 h-6" id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg class="w-6 h-6 hidden" id="menu-icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-lg border-t border-slate-100">
+    <div class="px-4 py-6 space-y-3">
+      {% block 'mobile-nav-links' %}
+      <a href="/" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Inicio</a>
+      <a href="{% url 'about' %}" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Nosotros</a>
+      <a href="{% url 'services' %}" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Servicios</a>
+      <a href="{% url 'catalog' %}" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Catálogo</a>
+      <a href="#equipo" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Equipo</a>
+      <a href="{% url 'materials' %}" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Materiales</a>
+      <a href="#contacto" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Contacto</a>
+      {% endblock %}
+    </div>
+  </div>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.contains('hidden');
+      
+      if (isOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('animate-slide-down');
+        menuIconOpen.classList.add('hidden');
+        menuIconClose.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('animate-slide-down');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close menu on window resize (if switching to desktop)
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 768) {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+});
+</script>

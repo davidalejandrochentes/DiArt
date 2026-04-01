@@ -3,24 +3,7 @@
 {% block 'title' %}{{ category.titulo }} - DiArt{% endblock %}
 
 {% block 'content' %}
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-20">
-      <div class="flex items-center">
-        <a href="/" class="text-3xl font-black bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">DiArt</a>
-      </div>
-      <div class="flex items-center space-x-8">
-        <a href="/" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Inicio</a>
-        <a href="#nosotros" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Nosotros</a>
-        <a href="#servicios" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Servicios</a>
-        <a href="#catalogo" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Catálogo</a>
-        <a href="#equipo" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Equipo</a>
-        <a href="{% url 'materials' %}" class="relative text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary">Materiales</a>
-        <a href="#contacto" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Contacto</a>
-      </div>
-    </div>
-  </div>
-</nav>
+{% include 'components/navbar-default.html' %}
 
 {% if category %}
 <section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
