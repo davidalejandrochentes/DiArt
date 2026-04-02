@@ -6,14 +6,15 @@
 {% include 'components/navbar-default.html' %}
 
 {% if product %}
-<section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+<section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-accent-cream relative overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="orb orb-1 absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl" style="top: 5%; right: 10%;"></div>
+    <div class="orb orb-2 absolute w-80 h-80 bg-accent-gold/10 rounded-full blur-3xl" style="bottom: 15%; left: 5%;"></div>
+    <div class="orb orb-3 absolute w-64 h-64 bg-accent-rose/10 rounded-full blur-3xl" style="top: 50%; right: 40%;"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
-    <nav class="flex items-center gap-2 text-sm mb-8">
+    <nav class="flex items-center gap-2 text-sm mb-8 reveal-element">
       <a href="/" class="text-slate-500 hover:text-primary transition-colors duration-300">Inicio</a>
       <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -30,31 +31,31 @@
     </nav>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-      <div class="relative">
+      <div class="relative reveal-element" data-tilt>
         {% if product.imagen %}
-        <div class="relative group">
-          <div class="absolute inset-0 bg-gradient-to-r from-primary to-blue-400 rounded-3xl blur-2xl opacity-20 transform rotate-3 scale-105"></div>
+        <div class="relative group card-shine">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent-gold rounded-3xl blur-2xl opacity-20 transform rotate-3 scale-105 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700"></div>
           <img src="{{ product.imagen.url }}" alt="{{ product.nombre }}" class="relative w-full h-auto rounded-3xl shadow-2xl shadow-slate-900/20 border-4 border-white">
         </div>
         {% endif %}
       </div>
 
       <div>
-        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
-          <span class="w-2 h-2 bg-primary rounded-full"></span>
-          <span class="text-sm font-semibold uppercase tracking-wider">{{ category.titulo }}</span>
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 reveal-element">
+          <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+          <span class="text-sm font-semibold uppercase tracking-wider font-accent">{{ category.titulo }}</span>
         </div>
-        <h1 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-6">
-          {{ product.nombre }}
+        <h1 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-6 font-heading reveal-element">
+          <span class="text-gradient-animated">{{ product.nombre }}</span>
         </h1>
-        <div class="prose prose-slate max-w-none">
+        <div class="prose prose-slate max-w-none reveal-element">
           <p class="text-lg text-slate-600 leading-relaxed">{{ product.descripcion }}</p>
         </div>
       </div>
     </div>
 
-    <div class="text-center">
-      <a href="{% url 'materials_category' slug=category.slug %}" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5">
+    <div class="text-center reveal-element">
+      <a href="{% url 'materials_category' slug=category.slug %}" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-0.5">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
         </svg>

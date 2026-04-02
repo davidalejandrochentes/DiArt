@@ -6,42 +6,38 @@
 {% include 'components/navbar-default.html' %}
 
 {% if category %}
-<section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+<section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-accent-cream relative overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="orb orb-1 absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl" style="top: 5%; right: 10%;"></div>
+    <div class="orb orb-2 absolute w-80 h-80 bg-accent-gold/10 rounded-full blur-3xl" style="bottom: 15%; left: 5%;"></div>
+    <div class="orb orb-3 absolute w-64 h-64 bg-accent-rose/10 rounded-full blur-3xl" style="top: 50%; right: 40%;"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
     <div class="text-center mb-16">
-      <a href="{% url 'materials' %}" class="inline-flex items-center gap-2 text-slate-500 hover:text-primary mb-6 transition-colors duration-300">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-        </svg>
-        Volver a materiales
-      </a>
-      <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
-        <span class="w-2 h-2 bg-primary rounded-full"></span>
-        <span class="text-sm font-semibold uppercase tracking-wider">{{ category.titulo }}</span>
+      <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 reveal-element">
+        <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+        <span class="text-sm font-semibold uppercase tracking-wider font-accent">{{ category.titulo }}</span>
       </div>
-      <h1 class="text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
-        {{ category.titulo }}
+      <h1 class="text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6 font-heading reveal-element">
+        <span class="text-gradient-animated">{{ category.titulo }}</span>
       </h1>
-      <p class="text-xl text-slate-600 max-w-3xl mx-auto">{{ category.descripcion }}</p>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto reveal-element">{{ category.descripcion }}</p>
     </div>
 
     {% if products %}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16" data-animate-grid>
       {% for product in products %}
-      <a href="{% url 'product_detail' slug_cat=category.slug slug_prod=product.slug %}" class="group bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+      <a href="{% url 'product_detail' slug_cat=category.slug slug_prod=product.slug %}" class="group bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 animate-item card-shine reveal-element" data-tilt>
         <div class="relative overflow-hidden aspect-square">
           {% if product.imagen %}
-          <img src="{{ product.imagen.url }}" alt="{{ product.nombre }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <img src="{{ product.imagen.url }}" alt="{{ product.nombre }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           {% endif %}
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
         <div class="p-6">
-          <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors duration-300">{{ product.nombre }}</h3>
-          <p class="text-slate-600 text-sm line-clamp-2">{{ product.descripcion }}</p>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors duration-300 font-heading">{{ product.nombre }}</h3>
+          <p class="text-slate-600 text-sm line-clamp-2 relative z-10">{{ product.descripcion }}</p>
         </div>
       </a>
       {% endfor %}
@@ -53,13 +49,13 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
         </svg>
       </div>
-      <h2 class="text-2xl font-bold text-slate-900 mb-2">Sin productos</h2>
+      <h2 class="text-2xl font-bold text-slate-900 mb-2 font-heading">Sin productos</h2>
       <p class="text-slate-500">Añade productos desde el admin</p>
     </div>
     {% endif %}
 
-    <div class="text-center">
-      <a href="{% url 'materials' %}" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5">
+    <div class="text-center reveal-element">
+      <a href="{% url 'materials' %}" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-0.5">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
         </svg>
