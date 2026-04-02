@@ -1,0 +1,70 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Equipo - DiArt{% endblock %}
+
+{% block 'content' %}
+{% include 'components/navbar-default.html' %}
+
+<section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-accent-cream relative overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="orb orb-1 absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl" style="top: 5%; right: 10%;"></div>
+    <div class="orb orb-2 absolute w-80 h-80 bg-accent-gold/10 rounded-full blur-3xl" style="bottom: 10%; left: 5%;"></div>
+    <div class="orb orb-3 absolute w-64 h-64 bg-accent-rose/10 rounded-full blur-3xl" style="top: 40%; right: 30%;"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 reveal-element">
+        <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+        <span class="text-sm font-semibold uppercase tracking-wider font-accent">Nuestro Equipo</span>
+      </div>
+      <h1 class="text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6 font-heading reveal-element">
+        Las personas detrás del <span class="text-gradient-animated">éxito</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto reveal-element">Conoce al talentoso equipo que hace posible cada proyecto, organizados por jerarquía</p>
+    </div>
+
+    {% if team_members %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16" data-animate-grid>
+      {% for member in team_members %}
+      <div class="group bg-white rounded-3xl shadow-xl shadow-slate-900/5 border border-slate-100 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-item card-shine reveal-element" data-tilt>
+        <div class="relative pt-8 px-8">
+          {% if member.imagen %}
+          <div class="relative mx-auto w-32 h-32 mb-6">
+            <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:opacity-100 opacity-0 transition-opacity duration-300"></div>
+            <img src="{{ member.imagen.url }}" alt="{{ member.nombre }}" class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+          </div>
+          {% endif %}
+          
+          <div class="text-center pb-8 relative">
+            <span class="absolute top-0 right-0 text-7xl font-black text-primary/5 group-hover:text-primary/10 transition-colors duration-300">0{{ forloop.counter }}</span>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors duration-300 font-heading">{{ member.nombre }}</h3>
+            <p class="text-slate-600 font-medium relative z-10">{{ member.cargo }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-20">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-slate-100 rounded-full mb-6">
+        <svg class="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold text-slate-900 mb-2 font-heading">Sin miembros</h2>
+      <p class="text-slate-500">Añade miembros del equipo desde el admin</p>
+    </div>
+    {% endif %}
+
+    <div class="text-center reveal-element">
+      <a href="/" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-0.5">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Volver al inicio
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
