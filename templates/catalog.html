@@ -5,34 +5,36 @@
 {% block 'content' %}
 {% include 'components/navbar-default.html' %}
 
-<section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+<section class="min-h-screen pt-20 bg-gradient-to-br from-slate-50 via-white to-accent-cream relative overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="orb orb-1 absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl" style="top: 5%; right: 15%;"></div>
+    <div class="orb orb-2 absolute w-80 h-80 bg-accent-gold/10 rounded-full blur-3xl" style="bottom: 10%; left: 10%;"></div>
+    <div class="orb orb-3 absolute w-72 h-72 bg-accent-rose/10 rounded-full blur-3xl" style="top: 40%; right: 40%;"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
     <div class="text-center mb-16">
-      <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
-        <span class="w-2 h-2 bg-primary rounded-full"></span>
-        <span class="text-sm font-semibold uppercase tracking-wider">Catálogo</span>
+      <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 reveal-element">
+        <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+        <span class="text-sm font-semibold uppercase tracking-wider font-accent">Catálogo</span>
       </div>
-      <h1 class="text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
-        Nuestro <span class="text-primary">portafolio</span>
+      <h1 class="text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6 font-heading reveal-element">
+        Nuestro <span class="text-gradient-animated">portafolio</span>
       </h1>
-      <p class="text-xl text-slate-600 max-w-3xl mx-auto">Explora nuestra colección completa de proyectos organizados por categorías</p>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto reveal-element">Explora nuestra colección completa de proyectos organizados por categorías</p>
     </div>
 
     {% if categories %}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" data-animate-grid>
       {% for category in categories %}
-      <a href="{% url 'category_detail' slug=category.slug %}" class="group relative bg-white rounded-3xl shadow-xl shadow-slate-900/5 border border-slate-100 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+      <a href="{% url 'category_detail' slug=category.slug %}" class="group relative bg-white rounded-3xl shadow-xl shadow-slate-900/5 border border-slate-100 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-item card-shine reveal-element" data-tilt>
         <div class="relative overflow-hidden aspect-[4/3]">
           {% if category.imagen %}
-          <img src="{{ category.imagen.url }}" alt="{{ category.titulo }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="{{ category.imagen.url }}" alt="{{ category.titulo }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
           {% endif %}
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
             <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-primary px-4 py-2 rounded-full text-sm font-semibold">
               Ver galería
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -41,9 +43,11 @@
             </span>
           </div>
         </div>
-        <div class="p-8">
-          <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors duration-300">{{ category.titulo }}</h3>
-          <p class="text-slate-600 leading-relaxed">{{ category.descripcion }}</p>
+        
+        <div class="p-8 relative">
+          <span class="absolute top-4 right-4 text-7xl font-black text-primary/5 group-hover:text-primary/10 transition-colors duration-300">0{{ forloop.counter }}</span>
+          <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors duration-300 font-heading">{{ category.titulo }}</h3>
+          <p class="text-slate-600 leading-relaxed relative z-10">{{ category.descripcion }}</p>
         </div>
       </a>
       {% endfor %}
@@ -60,8 +64,8 @@
     </div>
     {% endif %}
 
-    <div class="text-center">
-      <a href="/" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5">
+    <div class="text-center reveal-element">
+      <a href="/" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-0.5">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
         </svg>

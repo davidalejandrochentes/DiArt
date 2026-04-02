@@ -1,98 +1,139 @@
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="navbar">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
-      <!-- Logo -->
+      <!-- Logo con glow -->
       <div class="flex items-center">
-        <a href="/" class="text-3xl font-black bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">DiArt</a>
+        <a href="/" class="text-3xl font-black font-heading relative group magnetic-btn">
+          <span class="bg-gradient-to-r from-primary to-accent-gold bg-clip-text text-transparent">DiArt</span>
+          <span class="absolute inset-0 bg-gradient-to-r from-primary to-accent-gold bg-clip-text text-transparent blur-sm opacity-50 group-hover:opacity-100 transition-opacity">DiArt</span>
+        </a>
       </div>
 
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center space-x-8">
+      <!-- Desktop Menu con hover mejorado -->
+      <div class="hidden md:flex items-center space-x-1">
         {% block 'nav-links' %}
-        <a href="/" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Inicio</a>
-        <a href="{% url 'about' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Nosotros</a>
-        <a href="{% url 'services' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Servicios</a>
-        <a href="{% url 'catalog' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Catálogo</a>
-        <a href="#equipo" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Equipo</a>
-        <a href="{% url 'materials' %}" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Materiales</a>
-        <a href="#contacto" class="relative text-slate-700 hover:text-primary font-medium transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Contacto</a>
+        <a href="/" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+          <span class="relative z-10">Inicio</span>
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="{% url 'about' %}" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+          <span class="relative z-10">Nosotros</span>
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="{% url 'services' %}" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+          <span class="relative z-10">Servicios</span>
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="{% url 'catalog' %}" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+          <span class="relative z-10">Catálogo</span>
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#equipo" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+          <span class="relative z-10">Equipo</span>
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="{% url 'materials' %}" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+          <span class="relative z-10">Materiales</span>
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+        </a>
         {% endblock %}
       </div>
 
-      <!-- Mobile Menu Button -->
+      <!-- Mobile Menu Button con hamburger animado -->
       <div class="md:hidden flex items-center">
-        <button id="mobile-menu-button" class="text-slate-700 hover:text-primary p-2 rounded-lg transition-colors duration-300" aria-label="Abrir menú">
-          <svg class="w-6 h-6" id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-          <svg class="w-6 h-6 hidden" id="menu-icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
+        <button id="mobile-menu-button" class="relative w-10 h-10 flex items-center justify-center text-slate-700 hover:text-primary transition-colors duration-300 magnetic-btn" aria-label="Abrir menú">
+          <span class="hamburger-line absolute w-6 h-0.5 bg-current transition-all duration-300 transform -translate-y-2"></span>
+          <span class="hamburger-line absolute w-6 h-0.5 bg-current transition-all duration-300"></span>
+          <span class="hamburger-line absolute w-6 h-0.5 bg-current transition-all duration-300 transform translate-y-2"></span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-lg border-t border-slate-100">
-    <div class="px-4 py-6 space-y-3">
-      {% block 'mobile-nav-links' %}
-      <a href="/" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Inicio</a>
-      <a href="{% url 'about' %}" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Nosotros</a>
-      <a href="{% url 'services' %}" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Servicios</a>
-      <a href="{% url 'catalog' %}" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Catálogo</a>
-      <a href="#equipo" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Equipo</a>
-      <a href="{% url 'materials' %}" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Materiales</a>
-      <a href="#contacto" class="block px-4 py-3 text-slate-700 hover:text-primary hover:bg-primary/5 font-medium rounded-xl transition-all duration-300">Contacto</a>
-      {% endblock %}
+  <!-- Mobile Menu con transición full screen -->
+  <div id="mobile-menu" class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-opacity duration-500">
+    <div class="flex flex-col items-center justify-center h-full space-y-8">
+      <a href="/" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Inicio</a>
+      <a href="{% url 'about' %}" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Nosotros</a>
+      <a href="{% url 'services' %}" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Servicios</a>
+      <a href="{% url 'catalog' %}" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Catálogo</a>
+      <a href="#equipo" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Equipo</a>
+      <a href="{% url 'materials' %}" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Materiales</a>
     </div>
   </div>
 </nav>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  const navbar = document.getElementById('navbar');
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
-  const menuIconOpen = document.getElementById('menu-icon-open');
-  const menuIconClose = document.getElementById('menu-icon-close');
+  const hamburgerLines = document.querySelectorAll('.hamburger-line');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  let isOpen = false;
 
+  // Navbar scroll effect
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 50) {
+      navbar.classList.add('bg-white/90', 'backdrop-blur-lg', 'shadow-lg');
+    } else {
+      navbar.classList.remove('bg-white/90', 'backdrop-blur-lg', 'shadow-lg');
+    }
+    
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu animation
   if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', function() {
-      const isOpen = mobileMenu.classList.contains('hidden');
+      isOpen = !isOpen;
       
       if (isOpen) {
-        mobileMenu.classList.remove('hidden');
-        mobileMenu.classList.add('animate-slide-down');
-        menuIconOpen.classList.add('hidden');
-        menuIconClose.classList.remove('hidden');
+        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+        hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        hamburgerLines[1].style.opacity = '0';
+        hamburgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
         document.body.style.overflow = 'hidden';
+        
+        // Animate links
+        mobileNavLinks.forEach((link, i) => {
+          setTimeout(() => {
+            link.style.opacity = '1';
+            link.style.transform = 'translateY(0)';
+            link.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          }, 100 + (i * 80));
+        });
       } else {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('animate-slide-down');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
-        document.body.style.overflow = '';
+        closeMenu();
       }
     });
 
-    // Close menu when clicking on a link
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(function(link) {
-      link.addEventListener('click', function() {
-        mobileMenu.classList.add('hidden');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
-        document.body.style.overflow = '';
+    function closeMenu() {
+      isOpen = false;
+      mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+      hamburgerLines[0].style.transform = 'translateY(-8px)';
+      hamburgerLines[1].style.opacity = '1';
+      hamburgerLines[2].style.transform = 'translateY(8px)';
+      document.body.style.overflow = '';
+      
+      mobileNavLinks.forEach(link => {
+        link.style.opacity = '0';
+        link.style.transform = 'translateY(16px)';
       });
+    }
+
+    // Close on link click
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
 
-    // Close menu on window resize (if switching to desktop)
-    window.addEventListener('resize', function() {
+    // Close on resize
+    window.addEventListener('resize', () => {
       if (window.innerWidth >= 768) {
-        mobileMenu.classList.add('hidden');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
-        document.body.style.overflow = '';
+        closeMenu();
       }
     });
   }

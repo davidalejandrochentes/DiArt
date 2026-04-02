@@ -27,8 +27,12 @@
 <!-- Preconnect for performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 <!-- Tailwind CSS -->
 <script src="{% static "js/container-queries.js" %}"></script>
 <!-- Tailwind Configuration -->
@@ -45,14 +49,19 @@
 </head>
 
 <body class="bg-white text-slate-900 font-display antialiased overflow-x-hidden">
-
-<main id="main-content">
+  <main id="main-content">
 {% block 'content' %}{% endblock %}
 </main>
 
-{% include 'components/footer.html' %}
+  {% include 'components/footer.html' %}
 
-{% block 'scripts' %}{% endblock %}
+  <!-- Animation Scripts -->
+  <script src="{% static 'js/animations/particles.js' %}" defer></script>
+  <script src="{% static 'js/animations/scroll-reveal.js' %}" defer></script>
+  <script src="{% static 'js/animations/magnetic.js' %}" defer></script>
+  <script src="{% static 'js/animations/main-animations.js' %}" defer></script>
+
+  {% block 'scripts' %}{% endblock %}
 
 </body>
 </html>
