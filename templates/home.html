@@ -17,52 +17,49 @@
   
   <div class="absolute inset-0 bg-gradient-mesh z-0"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <div class="order-2 lg:order-1">
-        <div class="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm text-primary px-4 py-2 rounded-full mb-6 border border-primary/20 reveal-element">
-          <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-          <span class="text-sm font-semibold uppercase tracking-wider font-accent">{{ header.subtitulo }}</span>
-        </div>
-        
-        <h1 class="text-5xl lg:text-6xl xl:text-7xl font-black text-slate-900 leading-tight mb-8 font-heading reveal-element">
-          <span class="text-gradient-animated">{{ header.titulo }}</span>
-        </h1>
-        
-        <p class="text-xl text-slate-600 leading-relaxed mb-10 max-w-lg reveal-element">{{ header.descripcion }}</p>
-        
-        <div class="flex flex-wrap gap-4 reveal-element mb-6">
-          <a href="#nosotros" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-1">
-            Conocer más
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-          <a href="#footer" class="magnetic-btn inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white text-slate-700 px-8 py-4 rounded-xl font-semibold transition-all duration-300 border-2 border-slate-200 hover:border-primary hover:text-primary hover:-translate-y-1">
-            Contactar
-          </a>
-        </div>
-      </div>
-      
-      <div class="order-1 lg:order-2 relative reveal-element">
-        {% if header.imagen %}
-        <div class="relative group" data-tilt>
-          <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent-gold rounded-3xl blur-2xl opacity-30 transform rotate-6 scale-105 group-hover:rotate-3 group-hover:scale-110 transition-all duration-700"></div>
-          
-          <div class="absolute -inset-1 bg-gradient-to-r from-primary via-accent-gold to-accent-rose rounded-3xl opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-500"></div>
-          
-          <div class="relative card-shine rounded-3xl overflow-hidden">
-            <img src="{{ header.imagen.url }}" alt="{{ header.titulo }}" class="w-full h-auto rounded-3xl shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-          </div>
-          
-          <div class="absolute -top-6 -right-6 w-24 h-24 bg-accent-gold/30 rounded-full blur-xl animate-pulse"></div>
-          <div class="absolute -bottom-6 -left-6 w-20 h-20 bg-primary/30 rounded-full blur-xl animate-pulse" style="animation-delay: 1s;"></div>
-        </div>
-        {% endif %}
-      </div>
-    </div>
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+			<div class="order-2 lg:order-1 text-center lg:text-left">
+				<div class="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm text-primary px-4 py-2 rounded-full mb-6 border border-primary/20 reveal-element">
+					<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+					<span class="text-sm font-semibold uppercase tracking-wider font-accent">{{ header.subtitulo }}</span>
+				</div>
+
+				<h1 class="text-5xl lg:text-6xl xl:text-7xl font-black text-slate-900 leading-tight mb-8 font-heading reveal-element">
+					<span class="text-gradient-animated">{{ header.titulo }}</span>
+				</h1>
+
+				<p class="text-xl text-slate-600 leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0 reveal-element">{{ header.descripcion }}</p>
+
+				<div class="flex flex-wrap gap-4 justify-center lg:justify-start reveal-element mb-6">
+					<a href="#nosotros" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-1">
+						Conocer más
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+						</svg>
+					</a>
+				</div>
 			</div>
+
+			<div class="order-1 lg:order-2 relative reveal-element flex justify-center">
+				{% if header.imagen %}
+				<div class="relative group max-w-md" data-tilt>
+					<div class="absolute inset-0 bg-gradient-to-r from-primary to-accent-gold rounded-3xl blur-2xl opacity-30 transform rotate-6 scale-105 group-hover:rotate-3 group-hover:scale-110 transition-all duration-700"></div>
+
+					<div class="absolute -inset-1 bg-gradient-to-r from-primary via-accent-gold to-accent-rose rounded-3xl opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-500"></div>
+
+					<div class="relative card-shine rounded-3xl overflow-hidden">
+						<img src="{{ header.imagen.url }}" alt="{{ header.titulo }}" class="w-full h-auto rounded-3xl shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-700">
+						<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+					</div>
+
+					<div class="absolute -top-6 -right-6 w-24 h-24 bg-accent-gold/30 rounded-full blur-xl animate-pulse"></div>
+					<div class="absolute -bottom-6 -left-6 w-20 h-20 bg-primary/30 rounded-full blur-xl animate-pulse" style="animation-delay: 1s;"></div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
 		</section>
 {% else %}
 <section class="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -80,56 +77,58 @@
 
 {% if about %}
 <section id="nosotros" class="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
-<div class="absolute inset-0 overflow-hidden">
-<div class="absolute top-1/2 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-<div class="absolute bottom-0 -left-40 w-96 h-96 bg-accent-gold/5 rounded-full blur-3xl"></div>
-</div>
+	<div class="absolute inset-0 overflow-hidden">
+		<div class="absolute top-1/2 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+		<div class="absolute bottom-0 -left-40 w-96 h-96 bg-accent-gold/5 rounded-full blur-3xl"></div>
+	</div>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div class="relative reveal-element">
-{% if about.imagen_1 %}
-<div class="relative group" data-tilt>
-<div class="absolute inset-0 bg-gradient-to-r from-primary to-accent-gold rounded-3xl blur-2xl opacity-20 transform -rotate-6 scale-105 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700"></div>
-<img src="{{ about.imagen_1.url }}" alt="Sobre nosotros" class="relative w-full h-auto rounded-3xl shadow-2xl shadow-slate-900/10 border-4 border-white">
-</div>
-{% endif %}
-</div>
-
-<div>
-<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 reveal-element">
-<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-<span class="text-sm font-semibold uppercase tracking-wider">Sobre Nosotros</span>
-</div>
-<h2 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-6 font-heading reveal-element">
-Transformamos ideas en <span class="text-gradient-animated">realidad digital</span>
-</h2>
-<p class="text-lg text-slate-600 leading-relaxed mb-10 reveal-element">{{ about.texto_general }}</p>
-
-			<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-				<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-					<div class="text-4xl font-black text-primary mb-2">{{ about.proyectos_completados }}+</div>
-					<div class="text-sm text-slate-500 font-medium">Proyectos</div>
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+			<div class="relative reveal-element flex justify-center order-2 lg:order-1">
+				{% if about.imagen_1 %}
+				<div class="relative group max-w-md" data-tilt>
+					<div class="absolute inset-0 bg-gradient-to-r from-primary to-accent-gold rounded-3xl blur-2xl opacity-20 transform -rotate-6 scale-105 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700"></div>
+					<img src="{{ about.imagen_1.url }}" alt="Sobre nosotros" class="relative w-full h-auto rounded-3xl shadow-2xl shadow-slate-900/10 border-4 border-white">
 				</div>
-				<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-					<div class="text-4xl font-black text-primary mb-2">{{ about.anios_experiencia }}+</div>
-					<div class="text-sm text-slate-500 font-medium">Años</div>
-				</div>
-				<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-					<div class="text-4xl font-black text-primary mb-2">{{ about.clientes_felices }}+</div>
-					<div class="text-sm text-slate-500 font-medium">Clientes</div>
-				</div>
+				{% endif %}
 			</div>
 
-<a href="{% url 'about' %}" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-0.5 reveal-element">
-Conocer más
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-</svg>
-</a>
-</div>
-</div>
-</div>
+			<div class="text-center lg:text-left order-1 lg:order-2">
+				<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 reveal-element">
+					<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+					<span class="text-sm font-semibold uppercase tracking-wider">Sobre Nosotros</span>
+				</div>
+				<h2 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-6 font-heading reveal-element">
+					Transformamos ideas en <span class="text-gradient-animated">realidad digital</span>
+				</h2>
+				<p class="text-lg text-slate-600 leading-relaxed mb-10 reveal-element">{{ about.texto_general }}</p>
+
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+					<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+						<div class="text-4xl font-black text-primary mb-2">{{ about.proyectos_completados }}+</div>
+						<div class="text-sm text-slate-500 font-medium">Proyectos</div>
+					</div>
+					<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+						<div class="text-4xl font-black text-primary mb-2">{{ about.anios_experiencia }}+</div>
+						<div class="text-sm text-slate-500 font-medium">Años</div>
+					</div>
+					<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+						<div class="text-4xl font-black text-primary mb-2">{{ about.clientes_felices }}+</div>
+						<div class="text-sm text-slate-500 font-medium">Clientes</div>
+					</div>
+				</div>
+
+				<div class="flex justify-center lg:justify-start">
+					<a href="{% url 'about' %}" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-0.5 reveal-element">
+						Conocer más
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 {% endif %}
 
