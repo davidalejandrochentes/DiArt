@@ -9,35 +9,31 @@
         </a>
       </div>
 
-      <!-- Desktop Menu con hover mejorado -->
-      <div class="hidden md:flex items-center space-x-1">
-        {% block 'nav-links' %}
-        <a href="/" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
-          <span class="relative z-10">Inicio</span>
-          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="{% url 'about' %}" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
-          <span class="relative z-10">Nosotros</span>
-          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="{% url 'services' %}" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
-          <span class="relative z-10">Servicios</span>
-          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="{% url 'catalog' %}" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
-          <span class="relative z-10">Catálogo</span>
-          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#equipo" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
-          <span class="relative z-10">Equipo</span>
-          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="{% url 'materials' %}" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
-          <span class="relative z-10">Materiales</span>
-          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        {% endblock %}
-      </div>
+	<!-- Desktop Menu con hover mejorado -->
+	<div class="hidden md:flex items-center space-x-1">
+		{% block 'nav-links' %}
+		<a href="#nosotros" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+			<span class="relative z-10">Nosotros</span>
+			<span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+		</a>
+		<a href="#servicios" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+			<span class="relative z-10">Servicios</span>
+			<span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+		</a>
+		<a href="#catalogo" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+			<span class="relative z-10">Catálogo</span>
+			<span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+		</a>
+		<a href="#equipo" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+			<span class="relative z-10">Equipo</span>
+			<span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+		</a>
+		<a href="#materiales" class="nav-link relative px-4 py-2 text-slate-700 hover:text-primary font-medium transition-all duration-300 group">
+			<span class="relative z-10">Materiales</span>
+			<span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-gold transition-all duration-300 group-hover:w-full"></span>
+		</a>
+		{% endblock %}
+	</div>
 
       <!-- Mobile Menu Button con hamburger animado -->
       <div class="md:hidden flex items-center">
@@ -50,92 +46,117 @@
     </div>
   </div>
 
-  <!-- Mobile Menu con transición full screen -->
-  <div id="mobile-menu" class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-opacity duration-500">
-    <div class="flex flex-col items-center justify-center h-full space-y-8">
-      <a href="/" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Inicio</a>
-      <a href="{% url 'about' %}" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Nosotros</a>
-      <a href="{% url 'services' %}" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Servicios</a>
-      <a href="{% url 'catalog' %}" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Catálogo</a>
-      <a href="#equipo" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Equipo</a>
-      <a href="{% url 'materials' %}" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Materiales</a>
-    </div>
-  </div>
+	<!-- Mobile Menu con transición full screen -->
+	<div id="mobile-menu" class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-opacity duration-500">
+		<div class="flex flex-col items-center justify-center h-full space-y-8">
+			<a href="#nosotros" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Nosotros</a>
+			<a href="#servicios" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Servicios</a>
+			<a href="#catalogo" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Catálogo</a>
+			<a href="#equipo" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Equipo</a>
+			<a href="#materiales" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Materiales</a>
+		</div>
+	</div>
 </nav>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const navbar = document.getElementById('navbar');
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const hamburgerLines = document.querySelectorAll('.hamburger-line');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-  let isOpen = false;
+	const navbar = document.getElementById('navbar');
+	const mobileMenuButton = document.getElementById('mobile-menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+	const hamburgerLines = document.querySelectorAll('.hamburger-line');
+	const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+	const navLinks = document.querySelectorAll('.nav-link');
+	let isOpen = false;
 
-  // Navbar scroll effect
-  let lastScroll = 0;
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 50) {
-      navbar.classList.add('bg-white/90', 'backdrop-blur-lg', 'shadow-lg');
-    } else {
-      navbar.classList.remove('bg-white/90', 'backdrop-blur-lg', 'shadow-lg');
-    }
-    
-    lastScroll = currentScroll;
-  });
+	// Smooth scroll for anchor links
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function(e) {
+			const targetId = this.getAttribute('href');
+			if (targetId && targetId !== '#') {
+				const targetElement = document.querySelector(targetId);
+				if (targetElement) {
+					e.preventDefault();
+					const navbarHeight = navbar ? navbar.offsetHeight : 80;
+					const targetPosition = targetElement.offsetTop - navbarHeight;
+					
+					window.scrollTo({
+						top: targetPosition,
+						behavior: 'smooth'
+					});
 
-  // Mobile menu animation
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      isOpen = !isOpen;
-      
-      if (isOpen) {
-        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-        hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        hamburgerLines[1].style.opacity = '0';
-        hamburgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-        document.body.style.overflow = 'hidden';
-        
-        // Animate links
-        mobileNavLinks.forEach((link, i) => {
-          setTimeout(() => {
-            link.style.opacity = '1';
-            link.style.transform = 'translateY(0)';
-            link.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-          }, 100 + (i * 80));
-        });
-      } else {
-        closeMenu();
-      }
-    });
+					// Close mobile menu if open
+					if (isOpen) {
+						closeMenu();
+					}
+				}
+			}
+		});
+	});
 
-    function closeMenu() {
-      isOpen = false;
-      mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-      hamburgerLines[0].style.transform = 'translateY(-8px)';
-      hamburgerLines[1].style.opacity = '1';
-      hamburgerLines[2].style.transform = 'translateY(8px)';
-      document.body.style.overflow = '';
-      
-      mobileNavLinks.forEach(link => {
-        link.style.opacity = '0';
-        link.style.transform = 'translateY(16px)';
-      });
-    }
+	// Navbar scroll effect
+	let lastScroll = 0;
+	window.addEventListener('scroll', () => {
+		const currentScroll = window.pageYOffset;
 
-    // Close on link click
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+		if (currentScroll > 50) {
+			navbar.classList.add('bg-white/90', 'backdrop-blur-lg', 'shadow-lg');
+		} else {
+			navbar.classList.remove('bg-white/90', 'backdrop-blur-lg', 'shadow-lg');
+		}
 
-    // Close on resize
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768) {
-        closeMenu();
-      }
-    });
-  }
+		lastScroll = currentScroll;
+	});
+
+	// Mobile menu animation
+	if (mobileMenuButton && mobileMenu) {
+		mobileMenuButton.addEventListener('click', function() {
+			isOpen = !isOpen;
+
+			if (isOpen) {
+				mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+				hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+				hamburgerLines[1].style.opacity = '0';
+				hamburgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+				document.body.style.overflow = 'hidden';
+
+				// Animate links
+				mobileNavLinks.forEach((link, i) => {
+					setTimeout(() => {
+						link.style.opacity = '1';
+						link.style.transform = 'translateY(0)';
+						link.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+					}, 100 + (i * 80));
+				});
+			} else {
+				closeMenu();
+			}
+		});
+
+		function closeMenu() {
+			isOpen = false;
+			mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+			hamburgerLines[0].style.transform = 'translateY(-8px)';
+			hamburgerLines[1].style.opacity = '1';
+			hamburgerLines[2].style.transform = 'translateY(8px)';
+			document.body.style.overflow = '';
+
+			mobileNavLinks.forEach(link => {
+				link.style.opacity = '0';
+				link.style.transform = 'translateY(16px)';
+			});
+		}
+
+		// Close on link click
+		mobileNavLinks.forEach(link => {
+			link.addEventListener('click', closeMenu);
+		});
+
+		// Close on resize
+		window.addEventListener('resize', () => {
+			if (window.innerWidth >= 768) {
+				closeMenu();
+			}
+		});
+	}
 });
 </script>
