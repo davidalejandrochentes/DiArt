@@ -31,14 +31,14 @@
         
         <p class="text-xl text-slate-600 leading-relaxed mb-10 max-w-lg reveal-element">{{ header.descripcion }}</p>
         
-        <div class="flex flex-wrap gap-4 reveal-element">
+        <div class="flex flex-wrap gap-4 reveal-element mb-6">
           <a href="#nosotros" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-1">
             Conocer más
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </a>
-          <a href="#contacto" class="magnetic-btn inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white text-slate-700 px-8 py-4 rounded-xl font-semibold transition-all duration-300 border-2 border-slate-200 hover:border-primary hover:text-primary hover:-translate-y-1">
+          <a href="#footer" class="magnetic-btn inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white text-slate-700 px-8 py-4 rounded-xl font-semibold transition-all duration-300 border-2 border-slate-200 hover:border-primary hover:text-primary hover:-translate-y-1">
             Contactar
           </a>
         </div>
@@ -62,17 +62,8 @@
         {% endif %}
       </div>
     </div>
-  </div>
-
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 reveal-element">
-    <div class="flex flex-col items-center gap-2 scroll-indicator">
-      <span class="text-slate-400 text-sm font-medium">Scroll</span>
-      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </div>
-</section>
+			</div>
+		</section>
 {% else %}
 <section class="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50">
   <div class="text-center">
@@ -115,20 +106,20 @@ Transformamos ideas en <span class="text-gradient-animated">realidad digital</sp
 </h2>
 <p class="text-lg text-slate-600 leading-relaxed mb-10 reveal-element">{{ about.texto_general }}</p>
 
-<div class="grid grid-cols-3 gap-6 mb-10 reveal-element" data-animate-grid>
-<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-item">
-<div class="text-4xl font-black text-primary mb-2" data-counter="{{ about.proyectos_completados }}">0+</div>
-<div class="text-sm text-slate-500 font-medium">Proyectos</div>
-</div>
-<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-item">
-<div class="text-4xl font-black text-primary mb-2" data-counter="{{ about.anios_experiencia }}">0+</div>
-<div class="text-sm text-slate-500 font-medium">Años</div>
-</div>
-<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-item">
-<div class="text-4xl font-black text-primary mb-2" data-counter="{{ about.clientes_felices }}">0+</div>
-<div class="text-sm text-slate-500 font-medium">Clientes</div>
-</div>
-</div>
+			<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+				<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+					<div class="text-4xl font-black text-primary mb-2">{{ about.proyectos_completados }}+</div>
+					<div class="text-sm text-slate-500 font-medium">Proyectos</div>
+				</div>
+				<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+					<div class="text-4xl font-black text-primary mb-2">{{ about.anios_experiencia }}+</div>
+					<div class="text-sm text-slate-500 font-medium">Años</div>
+				</div>
+				<div class="text-center p-6 bg-white rounded-2xl shadow-lg shadow-slate-900/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+					<div class="text-4xl font-black text-primary mb-2">{{ about.clientes_felices }}+</div>
+					<div class="text-sm text-slate-500 font-medium">Clientes</div>
+				</div>
+			</div>
 
 <a href="{% url 'about' %}" class="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-glow-md hover:shadow-glow-lg hover:-translate-y-0.5 reveal-element">
 Conocer más
@@ -258,7 +249,7 @@ Las personas detrás del <span class="text-gradient-animated">éxito</span>
 </div>
 
 <div class="relative">
-<div id="team-carousel" class="carousel-container overflow-hidden">
+<div id="team-carousel" class="carousel-container overflow-hidden py-8">
 <div class="carousel-track flex transition-transform duration-500 ease-out">
 {% for member in team_members %}
 <div class="carousel-slide flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">

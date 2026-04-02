@@ -46,22 +46,28 @@
     </div>
   </div>
 
-	<!-- Mobile Menu con transición full screen -->
-	<div id="mobile-menu" class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-opacity duration-500">
-		<div class="flex flex-col items-center justify-center h-full space-y-8">
-			<a href="#nosotros" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Nosotros</a>
-			<a href="#servicios" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Servicios</a>
-			<a href="#catalogo" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Catálogo</a>
-			<a href="#equipo" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Equipo</a>
-			<a href="#materiales" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Materiales</a>
+		<!-- Mobile Menu con transición full screen -->
+		<div id="mobile-menu" class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-opacity duration-500">
+			<button id="close-menu-btn" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-slate-700 hover:text-primary transition-colors duration-300" aria-label="Cerrar menú">
+				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+				</svg>
+			</button>
+			<div class="flex flex-col items-center justify-center h-full space-y-8">
+				<a href="#nosotros" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Nosotros</a>
+				<a href="#servicios" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Servicios</a>
+				<a href="#catalogo" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Catálogo</a>
+				<a href="#equipo" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Equipo</a>
+				<a href="#materiales" class="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors font-heading opacity-0 transform translate-y-4">Materiales</a>
+			</div>
 		</div>
-	</div>
 </nav>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 	const navbar = document.getElementById('navbar');
 	const mobileMenuButton = document.getElementById('mobile-menu-button');
+	const closeMenuBtn = document.getElementById('close-menu-btn');
 	const mobileMenu = document.getElementById('mobile-menu');
 	const hamburgerLines = document.querySelectorAll('.hamburger-line');
 	const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
@@ -78,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					e.preventDefault();
 					const navbarHeight = navbar ? navbar.offsetHeight : 80;
 					const targetPosition = targetElement.offsetTop - navbarHeight;
-					
+
 					window.scrollTo({
 						top: targetPosition,
 						behavior: 'smooth'
@@ -113,24 +119,33 @@ document.addEventListener('DOMContentLoaded', function() {
 			isOpen = !isOpen;
 
 			if (isOpen) {
-				mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-				hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-				hamburgerLines[1].style.opacity = '0';
-				hamburgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-				document.body.style.overflow = 'hidden';
-
-				// Animate links
-				mobileNavLinks.forEach((link, i) => {
-					setTimeout(() => {
-						link.style.opacity = '1';
-						link.style.transform = 'translateY(0)';
-						link.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-					}, 100 + (i * 80));
-				});
+				openMenu();
 			} else {
 				closeMenu();
 			}
 		});
+
+		if (closeMenuBtn) {
+			closeMenuBtn.addEventListener('click', closeMenu);
+		}
+
+		function openMenu() {
+			isOpen = true;
+			mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+			hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+			hamburgerLines[1].style.opacity = '0';
+			hamburgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+			document.body.style.overflow = 'hidden';
+
+			// Animate links
+			mobileNavLinks.forEach((link, i) => {
+				setTimeout(() => {
+					link.style.opacity = '1';
+					link.style.transform = 'translateY(0)';
+					link.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+				}, 100 + (i * 80));
+			});
+		}
 
 		function closeMenu() {
 			isOpen = false;
